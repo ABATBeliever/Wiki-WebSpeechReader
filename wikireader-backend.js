@@ -11,7 +11,7 @@
   let currentMode      = 'random'; // 'random' | 'category' | 'search'
   let activeCategory   = '';
   let pendingTitle     = '';
-//  let countdownTimer   = null;
+  let countdownTimer   = null;
   let cdSec            = 0;
   let userHasInteracted = false;
 
@@ -106,7 +106,7 @@
   }
 
   /* ---------- 記事検索 ---------- */
-//  let artTimer = null;
+  let artTimer = null;
 
   function onArticleSearch() {
     clearTimeout(artTimer);
