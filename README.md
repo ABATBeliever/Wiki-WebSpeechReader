@@ -1,6 +1,9 @@
 # Wiki-WebSpeechReader
 
-日本語Wikipediaの記事をブラウザの音声合成（Web Speech API）で読み上げるウィジェットです。既存サイトのbody内に3ファイルを組み込むだけで動作します。
+日本語Wikipediaの記事をブラウザの音声合成（Web Speech API）で読み上げるウィジェットです。<br>
+既存サイトのbody内に3ファイルを組み込むだけで動作します。
+
+[動作例はこちら](https://abatbeliever.net/software/web/WikipediaReader/)
 
 ![img](./sample.png)
 ---
