@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="./wikireader.css">
+<script src="./wikireader-backend.js"></script>
+
+<div class="wikireader">
+
+  <div class="wr-main-card">
+
+    <div class="wr-article-header">
+      <p class="wr-article-title loading" id="wr-article-title">記事を取得中...</p>
+      <span class="wr-source-tag tag-random" id="wr-source-tag">ランダム</span><a
+        class="wr-article-link hidden" id="wr-article-link"
+        href="#" target="_blank" rel="noopener">Wikipediaの記事を開く</a>
+    </div>
+
+    <div class="wr-voice-info">
+      <div class="wr-voice-dot" id="wr-voice-dot"></div>
+      <span id="wr-voice-name">音声を初期化中。<br>変化がない場合ブラウザが対応していない可能性があります。</span>
+    </div>
+
+    <div class="wr-content-area" id="wr-content-area">
+      <div class="wr-empty-state">
+        <div>記事を取得中です。<br>画面が変わらない場合、javascriptが有効に<br>なっているか確認して下さい。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wr-search-panel">
+
+    <div class="wr-search-panel-heading">モード選択</div>
+
+    <div class="wr-mode-tabs">
+      <button class="wr-mode-tab active" id="wr-tab-random"
+              onclick="WR.setMode('random')">ランダム取得</button>
+      <button class="wr-mode-tab" id="wr-tab-category"
+              onclick="WR.setMode('category')">カテゴリを指定する</button>
+      <button class="wr-mode-tab" id="wr-tab-search"
+              onclick="WR.setMode('search')">記事を検索</button>
+    </div>
+
+    <div class="wr-search-row visible" id="wr-row-random">
+      <span class="wr-row-desc">
+        日本語Wikipediaからランダムに記事を選びます。<br>「新しい記事」を押すたびに別の記事が読み込まれます。
+      </span>
+    </div>
+
+    <div class="wr-search-row" id="wr-row-category">
+      <div class="wr-search-label">カテゴリ名を入力...</div>
+      <div class="wr-search-input-row">
+        <input type="text" class="wr-search-input" id="wr-category-input"
+               placeholder="例: 日本の歴史、天文学、音楽家..."
+               oninput="WR.onCategoryInput()"
+               onkeydown="if(event.key==='Enter') WR.applyCategory()">
+        <button class="wr-btn-search-go" onclick="WR.applyCategory()">適用</button>
+      </div>
+      <div id="wr-cat-results" class="wr-search-results"></div>
+      <div class="wr-cat-active-label" id="wr-cat-active-label"></div>
+    </div>
+
+    <div class="wr-search-row" id="wr-row-search">
+      <div class="wr-search-label">記事を検索</div>
+      <div class="wr-search-input-row">
+        <input type="text" class="wr-search-input" id="wr-article-search-input"
+               placeholder="例: 東京タワー、ベートーヴェン、ブラックホール..."
+               oninput="WR.onArticleSearch()"
+               onkeydown="if(event.key==='Enter') WR.doArticleSearch()">
+        <button class="wr-btn-search-go" onclick="WR.doArticleSearch()">検索 &amp; 読む</button>
+      </div>
+      <div id="wr-article-results" class="wr-search-results"></div>
+    </div>
+
+  </div><!-- /.wr-search-panel -->
+
+  <div class="wr-player-section">
+    <div class="wr-progress-track">
+      <div class="wr-progress-fill" id="wr-progress-fill"></div>
+    </div>
+    <div class="wr-controls">
+      <button class="wr-btn" id="wr-btn-new"
+              onclick="WR.loadArticle()">新しい記事</button>
+      <button class="wr-btn wr-btn-primary" id="wr-btn-play"
+              onclick="WR.togglePlay()" disabled>読み上げ開始</button>
+      <button class="wr-btn wr-btn-stop" id="wr-btn-stop"
+              onclick="WR.stopSpeech()" disabled>停止</button>
+      <div class="wr-speed-control">
+        <button class="wr-btn" style="padding:6px 10px !important;"
+                onclick="WR.changeSpeed(-0.1)">−</button>
+        <span class="wr-speed-display" id="wr-speed-display">1.0×</span>
+        <button class="wr-btn" style="padding:6px 10px !important;"
+                onclick="WR.changeSpeed(0.1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wr-options-row">
+    <label class="wr-checkbox-label" id="wr-auto-label">
+      <input type="checkbox" id="wr-chk-auto" onchange="WR.onAutoChange()">
+      読み終わったら、次の記事を自動再生
+    </label>
+    <span id="wr-auto-note"></span>
+  </div>
+
+  <div class="wr-status-bar">
+    <div class="wr-status-spinner" id="wr-spinner"></div>
+    ステータス: <span id="wr-status-text">準備完了</span>
+  </div>
+
+  <div class="wr-footer">
+  <p>
+    音声: Web Speech API &nbsp;|&nbsp;
+    記事: <a href="https://ja.wikipedia.org" target="_blank" rel="noopener"><font color="blue">Wikipedia 日本語版</font></a> のAPI
+  </p>
+  </div>
+
+</div>
+<p>Wikipediaの記事テキストは原則として CC BY-SA 4.0 ライセンス で公開されています。</p>
