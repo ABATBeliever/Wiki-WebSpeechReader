@@ -3,7 +3,8 @@
 日本語Wikipediaの記事をブラウザの音声合成（Web Speech API）で読み上げるウィジェットです。<br>
 既存サイトのbody内に3ファイルを組み込むだけで動作します。
 
-[動作例はこちら](https://abatbeliever.net/software/web/WikipediaReader/)
+[動作例はこちら](https://abatbeliever.net/software/web/WikipediaReader/)  
+[アプリ版(Tauri)はこちら](https://github.com/ABATBeliever/Wiki-WebSpeechReader-bin/)
 
 ![img](./sample.png)
 ---
